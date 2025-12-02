@@ -40,14 +40,6 @@ body {
   font-family: var(--font-family);
 }
 
-body,
-button,
-input,
-textarea {
-  font-family: "Space Grotesk", sans-serif;
-  letter-spacing: 0.2px;
-}
-
 .app-container {
   display: flex;
   height: 100vh;
@@ -69,20 +61,15 @@ textarea {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px var(--padding);
+  padding: 14px var(--padding);
   background-color: var(--color-btn-new);
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
   color: white;
   font-weight: 600;
-  font-size: var(--font-size-base);
+  font-size: 17px;
   transition: background 0.2s ease, transform 0.1s ease;
-}
-
-.btn-new-note:hover {
-  background-color: var(--color-sidebar-hover);
-  transform: scale(1.02);
 }
 
 .note-list {
@@ -99,24 +86,35 @@ textarea {
   background-color: var(--color-sidebar-item);
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
-  position: relative;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.note-item:hover {
-  background-color: var(--color-sidebar-hover);
-  transform: translateX(3px);
+  transition: background 0.2s ease;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .note-item.selected {
   background-color: #b7d6b8;
-  transform: translateX(3px);
 }
 
-body.dark .note-item.selected {
-  background-color: #2a5730;
+.note-title {
+  font-size: 16px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-preview {
+  font-size: 14px;
+  color: #444;
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+.note-time {
+  font-size: 12px;
+  opacity: 0.7;
 }
 
 .editor {
@@ -124,19 +122,14 @@ body.dark .note-item.selected {
   display: flex;
   flex-direction: column;
   padding: var(--padding);
-  background-color: var(--color-bg);
   gap: var(--gap);
-}
-
-body.dark .editor {
-  background-color: #0f0f0f;
 }
 
 .editor-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 10px;
+  align-items: center;
 }
 
 #input-title {
@@ -150,39 +143,31 @@ body.dark .editor {
   color: var(--color-text);
 }
 
-body.dark #input-title {
-  background-color: #111;
-  border: 1px solid #333;
-  color: #e6ffe6;
-}
-
 .editor-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .btn-save,
 .btn-delete {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 10px var(--padding);
+  padding: 14px 20px;
+  font-size: 16px;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 12px;
   cursor: pointer;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  font-size: 14px;
+  color: white;
 }
 
 .btn-save {
   background-color: var(--color-btn-save);
-  color: white;
 }
 
 .btn-delete {
   background-color: var(--color-btn-delete);
-  color: white;
 }
 
 #input-content {
@@ -197,15 +182,9 @@ body.dark #input-title {
   color: var(--color-text);
 }
 
-body.dark #input-content {
-  background-color: #111;
-  border: 1px solid #333;
-  color: #e6ffe6;
-}
-
 .icon {
-  width: var(--icon-size);
-  height: var(--icon-size);
+  width: 24px;
+  height: 24px;
 }
 
 .theme-btn {
@@ -226,23 +205,6 @@ body.dark #input-content {
   width: 30px;
   height: 30px;
   stroke: #111;
-  transition: stroke 0.3s ease;
-  stroke-width: 1.7;
-}
-
-body.dark .theme-btn svg {
-  stroke: #9fff9c;
-}
-
-.theme-btn:hover svg {
-  stroke: #000;
-  transform: scale(1.1);
-  transition: 0.2s ease;
-}
-
-body.dark .theme-btn:hover svg {
-  stroke: #caffc7;
-  transform: scale(1.1);
 }
 
 @media (max-width: 900px) {
@@ -270,86 +232,16 @@ body.dark .theme-btn:hover svg {
     min-width: 200px;
   }
 
-  .editor {
-    height: calc(100vh - 120px);
-  }
-
-  .theme-btn:hover svg {
-    stroke: #000;
-    transform: scale(1.1);
-    transition: 0.2s ease;
-  }
-
-  body.dark .theme-btn:hover svg {
-    stroke: #caffc7;
-    transform: scale(1.1);
-  }
-}
-
-@media (max-width: 600px) {
-  :root {
-    --padding: 10px;
-    --gap: 10px;
-    --font-size-base: 14px;
-  }
-
-  .sidebar {
-    padding: 10px;
-  }
-
-  .btn-new-note {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .note-item {
-    padding: 12px;
-  }
-
   .editor-header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  #input-title {
-    width: 100%;
-  }
-
-  .editor-buttons {
-    width: 100%;
+    flex-direction: row;
     justify-content: space-between;
   }
 
-  #input-content {
-    font-size: 15px;
+  #input-title {
+    width: 65%;
   }
 
-  .theme-btn {
-    bottom: 10px;
-    left: 10px;
-    width: 38px;
-    height: 38px;
-  }
-
-  .theme-btn svg {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-@media (max-width: 400px) {
-  .note-item {
-    min-width: 150px;
-  }
-
-  #input-title,
-  #input-content {
-    font-size: 14px;
-  }
-
-  .btn-save,
-  .btn-delete {
-    padding: 8px 10px;
-    font-size: 12px;
+  .editor-buttons {
+    justify-content: flex-end;
   }
 }
