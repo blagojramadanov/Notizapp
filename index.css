@@ -207,6 +207,10 @@ body {
   stroke: #111;
 }
 
+body.dark .note-preview {
+  color: #ffffff;
+}
+
 @media (max-width: 900px) {
   .app-container {
     flex-direction: column;
