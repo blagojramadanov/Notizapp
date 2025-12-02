@@ -208,6 +208,7 @@ body {
 }
 
 body.dark .note-preview {
+  /* new because i forgot the color of the content */
   color: #ffffff;
 }
 
